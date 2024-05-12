@@ -1518,6 +1518,10 @@ class MainWindow(QMainWindow, WindowMixin):
 
     def delete_image(self):
         delete_path = self.file_path
+        if (self.cur_img_idx + 1) == self.img_count:
+            self.open_prev_image()
+        else:
+            self.open_next_image()
         if delete_path is not None:
             idx = self.cur_img_idx
             if os.path.exists(delete_path):
